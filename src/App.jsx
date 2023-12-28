@@ -1,9 +1,6 @@
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './assets/style/main.css'
-// const Router = ReactRouterDOM.BrowserRouter
-// const { Route, Routes } = ReactRouterDOM
-// const { Provider } = ReactRedux
 
 import { AppHeader } from './cmps/AppHeader'
 
@@ -30,7 +27,6 @@ export function App() {
               <Route element={<ToyIndex />} path="/toy" />
             </Routes>
           </main>
-
         </section>
       </Router>
     </Provider>

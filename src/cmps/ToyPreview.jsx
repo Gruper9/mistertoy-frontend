@@ -7,6 +7,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy, addToCart }) {
             <Link to={`/toy/${toy._id}`} >
                 <h1>{toy.name}</h1>
             </Link>
+            <img src="../src/assets/img/toy.png" />
             <p>Price: {toy.price} <span></span></p>
             <div>
                 <button onClick={() => {

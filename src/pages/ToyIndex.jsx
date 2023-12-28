@@ -84,7 +84,7 @@ export function ToyIndex() {
                     addToCart={addToCart}
                 />}
                 {isLoading && <div>Loading...</div>}
-                <hr />
+
                 <pre>{JSON.stringify(cart, null, 2)}</pre>
             </main>
         </div>
