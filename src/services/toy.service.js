@@ -44,7 +44,6 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
-        _id: '',
         name: '',
         price: '',
         labels: [labels[utilService.getRandomIntInclusive(1, labels.length)], labels[utilService.getRandomIntInclusive(1, labels.length)]],
