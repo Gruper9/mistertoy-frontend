@@ -45,8 +45,8 @@ function save(toy) {
 function getEmptyToy() {
     return {
         _id: '',
-        name: utilService.makeLorem(2),
-        price: utilService.getRandomIntInclusive(1, 100),
+        name: '',
+        price: '',
         labels: [labels[utilService.getRandomIntInclusive(1, labels.length)], labels[utilService.getRandomIntInclusive(1, labels.length)]],
         createdAt: Date.now(),
         inStock: true,

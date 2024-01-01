@@ -6,6 +6,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { loadToys, removeToy, removeToyOptimistic, saveToy, setFilterBy } from '../store/actions/toy.actions.js'
 import { ADD_TOY_TO_CART } from '../store/reducers/toy.reducer.js'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export function ToyIndex() {
     const dispatch = useDispatch()
@@ -13,6 +14,9 @@ export function ToyIndex() {
     const cart = useSelector(storeState => storeState.toyModule.shoppingCart)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+    const navigate = useNavigate()
+
+
 
     useEffect(() => {
         loadToys()
@@ -32,18 +36,6 @@ export function ToyIndex() {
             })
     }
 
-    function onAddToy() {
-        const toyToSave = toyService.getEmptyToy()
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`toy added`)
-
-            })
-            .catch(err => {
-                console.log('Cannot add toy', err)
-                showErrorMsg('Cannot add toy')
-            })
-    }
 
     function onEditToy(toy) {
         const price = +prompt('New price?')
@@ -75,7 +67,7 @@ export function ToyIndex() {
         <div>
             <h3>Toys App</h3>
             <main>
-                <button onClick={onAddToy}>Add Toy ⛐</button>
+                <button onClick={() => { navigate('/toy/edit') }}>Add Toy ⛐</button>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading && <ToyList
                     toys={toys}
@@ -83,7 +75,7 @@ export function ToyIndex() {
                     onRemoveToy={onRemoveToy}
                     addToCart={addToCart}
                 />}
-                {isLoading && <div>Loading...</div>}
+                {isLoading && <div >Loading...</div>}
 
                 <pre>{JSON.stringify(cart, null, 2)}</pre>
             </main>
